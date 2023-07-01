@@ -8,6 +8,7 @@ const createJwtToken = (payload: JwtPayload): string => {
   const token = jwt.sign(payload, process.env.JWT_SECRET_KEY!, {
     expiresIn: process.env.JWT_EXPIRATION,
   });
+
   return token;
 };
 
@@ -33,7 +34,11 @@ function checkJwt(req: Request, res: Response, next: NextFunction) {
 
       data = <JwtPayload>data;
       req.jwtPayload = data;
-      if (!(data && data.id)) return next(new Error('Jwt token  not found.'));
+
+      if (!(data && data.id)) {
+        return next(new Error('Jwt token  not found.'));
+      }
+
       next();
     });
   } catch (error) {

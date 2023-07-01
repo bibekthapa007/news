@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
-import { checkJwt } from 'src/middlewares/jwt';
-import authController from 'src/controllers/authController';
+
+import { checkJwt } from 'middlewares/jwt';
+import authController from 'controllers/authController';
 
 const router = Router();
 

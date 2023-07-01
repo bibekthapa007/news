@@ -12,6 +12,7 @@ const BookMarkSchema: Schema = new Schema({
     ref: 'User',
     required: [true, 'BookMark must belong to this user.'],
   },
+
   postId: {
     type: SchemaTypes.ObjectId,
     ref: 'Post',

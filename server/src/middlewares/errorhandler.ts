@@ -1,12 +1,12 @@
-import { Request, Response, NextFunction } from 'express';
-
 import HttpStatus from 'http-status-codes';
+import { Request, Response, NextFunction } from 'express';
 
 import TokenError from '../errors/token';
 import DatabaseError from '../errors/database';
+import NotFoundError from '../errors/notFound';
 import ForbiddenError from '../errors/forbidden';
 import ValidationError from '../errors/validation';
-import NotFoundError from '../errors/notFound';
+
 import Logger from '../utils/Logger';
 
 function buildError(error: any) {

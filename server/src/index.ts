@@ -4,6 +4,7 @@ import Logger from './utils/Logger';
 import connect from './utils/mongodb';
 
 const port = process.env.port;
+
 app.listen(port, async () => {
   Logger.info(`Server started running on port ${port}`);
   await connect();

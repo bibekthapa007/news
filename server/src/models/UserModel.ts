@@ -1,5 +1,5 @@
-import mongoose, { Schema, SchemaTypes } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import mongoose, { Schema, SchemaTypes } from 'mongoose';
 
 export interface IUser extends Document {
   _id: string;
@@ -55,8 +55,13 @@ UserSchema.set('toJSON', {
 });
 
 UserSchema.pre('save', function (next) {
-  if (!this.password) return next();
-  if (!(this.isModified('password') || this.isNew)) return next();
+  if (!this.password) {
+    return next();
+  }
+
+  if (!(this.isModified('password') || this.isNew)) {
+    return next();
+  }
 
   try {
     const salt = bcrypt.genSaltSync(10);

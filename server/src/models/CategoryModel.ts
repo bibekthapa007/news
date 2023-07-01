@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
 import slugify from 'slugify';
+import mongoose, { Schema } from 'mongoose';
 
 export interface ICategory extends Document {
   _id: string;
@@ -23,7 +23,10 @@ CategorySchema.set('toJSON', {
 });
 
 CategorySchema.pre('save', function (next) {
-  if (!(this.isModified('title') || this.isNew)) return next();
+  if (!(this.isModified('title') || this.isNew)) {
+    return next();
+  }
+
   this.slug = `${slugify(this.title, { lower: true })}`;
   next();
 });

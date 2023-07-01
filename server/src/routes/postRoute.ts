@@ -1,6 +1,7 @@
-import { checkJwt } from 'src/middlewares/jwt';
 import { Router } from 'express';
-import postController from '../controllers/postContoller';
+import { checkJwt } from 'middlewares/jwt';
+
+import postController from 'controllers/postContoller';
 
 const router = Router();
 

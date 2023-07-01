@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { checkJwt } from 'src/middlewares/jwt';
-import AuthRoute from 'src/routes/authRoute';
-import CategoryRoute from 'src/routes/categoryRoute';
-import PostRoute from 'src/routes/postRoute';
-import UserRoute from 'src/routes/userRoute';
+import UserRoute from 'routes/userRoute';
+import AuthRoute from 'routes/authRoute';
+import PostRoute from 'routes/postRoute';
+import { checkJwt } from 'middlewares/jwt';
+import CategoryRoute from 'routes/categoryRoute';
 
 const router = Router();
 

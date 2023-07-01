@@ -1,6 +1,6 @@
 import { number } from 'joi';
-import mongoose, { Schema, SchemaTypes } from 'mongoose';
 import slugify from 'slugify';
+import mongoose, { Schema, SchemaTypes } from 'mongoose';
 
 export interface IPost extends Document {
   _id: string;
@@ -56,7 +56,10 @@ PostSchema.set('toJSON', {
 });
 
 PostSchema.pre('save', function (next) {
-  if (!(this.isModified('title') || this.isNew)) return next();
+  if (!(this.isModified('title') || this.isNew)) {
+    return next();
+  }
+
   this.slug = `${slugify(this.title, { lower: true })}-${Date.now()}`;
   next();
 });

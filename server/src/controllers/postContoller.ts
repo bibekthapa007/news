@@ -1,14 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
+import Logger from 'utils/Logger';
+import UserModel from 'models/UserModel';
 import HttpStatus from 'http-status-codes';
+import CategoryModel from 'models/CategoryModel';
+import { Request, Response, NextFunction } from 'express';
 
-import NotFoundError from '../errors/notFound';
-import ValidationError from '../errors/validation';
-import Post from '../models/PostModel';
-import { uploadFromBuffer } from '../utils/cloudinary';
-import Logger from 'src/utils/Logger';
-import UserModel from 'src/models/UserModel';
-import CategoryModel from 'src/models/CategoryModel';
+import NotFoundError from 'errors/notFound';
+import ValidationError from 'errors/validation';
+
+import Post from 'models/PostModel';
+
+import { uploadFromBuffer } from 'utils/cloudinary';
 
 async function getPostList(req: Request, res: Response, next: NextFunction) {
   try {

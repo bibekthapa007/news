@@ -1,7 +1,7 @@
-import { checkJwt } from 'src/middlewares/jwt';
-import { Router } from 'express';
 import multer from 'multer';
-import categoryController from 'src/controllers/categoryController';
+import { Router } from 'express';
+import { checkJwt } from 'middlewares/jwt';
+import categoryController from 'controllers/categoryController';
 
 const router = Router();
 

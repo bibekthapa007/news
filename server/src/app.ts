@@ -1,12 +1,14 @@
 import 'dotenv/config';
-import express from 'express';
-import morgan from 'morgan';
+
 import cors from 'cors';
+import morgan from 'morgan';
 import helmet from 'helmet';
 import multer from 'multer';
+import express from 'express';
 import cookieParser from 'cookie-parser';
 
 import ApiRoute from './routes/apiRoute';
+
 import { errorHandler } from './middlewares/errorhandler';
 
 const app = express();

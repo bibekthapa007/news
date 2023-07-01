@@ -7,9 +7,9 @@ import { fetchCategory } from "features/category/CategorySlice";
 import CreateCategoryForm from "features/category/CreateCategoryForm";
 
 export default function SingleAdminCategory() {
-  let dispatch = useAppDispatch();
-  let router = useRouter();
-  let categoryId = router.query.categoryId as string;
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const categoryId = router.query.categoryId as string;
 
   useEffect(() => {
     dispatch(fetchCategory(categoryId));
