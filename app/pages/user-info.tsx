@@ -1,26 +1,28 @@
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+
 import {
   Box,
-  Button,
-  Checkbox,
-  Container,
   Flex,
-  FormErrorMessage,
-  Heading,
-  IconButton,
-  Input,
-  ListItem,
-  Select,
   Text,
+  Input,
+  Button,
+  Select,
+  Heading,
+  Checkbox,
+  ListItem,
+  Container,
+  IconButton,
   UnorderedList,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
-import DashboardLayout from "components/DashboardLayout";
+
 import { updateUser } from "features/auth/AuthSlice";
-import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "store/hook";
 import ProtectedLayout from "components/ProtectedRoute";
-import { useEffect } from "react";
+import DashboardLayout from "components/DashboardLayout";
+import { useAppDispatch, useAppSelector } from "store/hook";
 
 export interface UpdateInfoForm {
   age: number;
@@ -44,7 +46,7 @@ function UpdateInfo() {
 
   useEffect(() => {
     if (user) {
-      let { gender, occupation, viewPolitical, viewSensitive } = user;
+      const { gender, occupation, viewPolitical, viewSensitive } = user;
       reset({ gender, occupation, viewPolitical, viewSensitive });
     }
   }, [user]);
@@ -52,8 +54,10 @@ function UpdateInfo() {
   const onSubmit = handleSubmit((data) => {
     console.log(data, "User update form submitted");
     data.age = Number(data.age);
+
     dispatch(updateUser(data)).then((data: any) => {
-      let requestStatus = data.meta.requestStatus as string;
+      const requestStatus = data.meta.requestStatus as string;
+
       if (requestStatus === "fulfilled") {
         toast({
           title: "User updated successfully.",

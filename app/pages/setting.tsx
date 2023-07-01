@@ -1,27 +1,29 @@
-import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
 import {
   Box,
-  Button,
-  Checkbox,
   Flex,
+  Text,
+  Input,
+  Button,
+  Heading,
+  Checkbox,
+  FormLabel,
   FormControl,
   FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  Text,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
 
-import { useAppDispatch, useAppSelector } from "store/hook";
 import { updateUser } from "features/auth/AuthSlice";
-import DashboardLayout from "components/DashboardLayout";
-import { checkFileSize, checkMimeType, maxSelectFile } from "utils/image";
-import { UserProfileForm } from "types/auth";
 import ProtectedRoute from "components/ProtectedRoute";
 import isCategoriesEqual from "utils/isCategoriesEqual";
+import DashboardLayout from "components/DashboardLayout";
+import { useAppDispatch, useAppSelector } from "store/hook";
+import { checkFileSize, checkMimeType, maxSelectFile } from "utils/image";
+
+import { UserProfileForm } from "types/auth";
 
 export default function Setting() {
   let dispatch = useAppDispatch();
@@ -51,7 +53,8 @@ export default function Setting() {
     dispatch(
       updateUser({ name: data.name, releventCategories: relevent })
     ).then((data) => {
-      let requestStatus = data.meta.requestStatus as string;
+      const requestStatus = data.meta.requestStatus as string;
+
       if (requestStatus === "fulfilled") {
         toast({
           title: "User updated successfully.",
@@ -87,6 +90,7 @@ export default function Setting() {
     if (!relevent) {
       return console.log("No relevent found.");
     }
+
     if (checked) {
       if (!relevent.includes(categoryId)) {
         setRelevent([...relevent, categoryId]);
@@ -96,9 +100,11 @@ export default function Setting() {
         if (relevent.length === 1) {
           return alert("There must be at least one category");
         }
+
         let newRelevent = relevent.filter(
           (category) => category !== categoryId
         );
+
         setRelevent(newRelevent);
       }
     }

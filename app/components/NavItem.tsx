@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/layout";
 import Link from "next/link";
+import { Box, Flex } from "@chakra-ui/layout";
 
 interface NavItemProps {
   icon: any;

@@ -1,28 +1,29 @@
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
-import { Box } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
 import {
-  FormControl,
   FormLabel,
+  FormControl,
   FormErrorMessage,
 } from "@chakra-ui/form-control";
+import { Box } from "@chakra-ui/layout";
 import { Input } from "@chakra-ui/input";
-import { Heading } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/layout";
 import { Flex } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+import { Heading } from "@chakra-ui/layout";
 import { Textarea } from "@chakra-ui/textarea";
 
-import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "store/hook";
+import { CategoryForm, CategoryResponse } from "types/category";
+import { checkFileSize, checkMimeType, maxSelectFile } from "utils/image";
 import { createCategory, fetchCategory, updateCategory } from "./CategorySlice";
-import { CategoryForm, CategoryResponse } from "../../types/category";
-import { checkFileSize, checkMimeType, maxSelectFile } from "../../utils/image";
 
 export default function CreateCategoryForm() {
   const dispatch = useAppDispatch();
   const router = useRouter();
+
   const { category, creating, createError, updating, updateError } =
     useAppSelector((state) => state.category);
 
@@ -82,6 +83,7 @@ export default function CreateCategoryForm() {
       }
     }
   };
+
   return (
     <Box pt={2} maxW="xl" mx="auto">
       <form onSubmit={onSubmit}>

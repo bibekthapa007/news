@@ -1,13 +1,14 @@
-import { Box, Container, Flex, Heading, Text } from "@chakra-ui/layout";
+import Link from "next/link";
 import { Button } from "@chakra-ui/react";
 import { HiChevronUp } from "react-icons/hi";
-import Link from "next/link";
+import { Box, Container, Flex, Heading, Text } from "@chakra-ui/layout";
 
 function Footer() {
   const handleSrollToTop = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     window.scrollTo(0, 0);
   };
+
   return (
     <Box bg="gray.200" color="black">
       <Container maxW="container.xl">
@@ -43,6 +44,7 @@ function Footer() {
               </Link>
             </Flex>
           </Flex>
+
           <Button
             colorScheme="green"
             display={["", "", "", "none"]}

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
 import Router from "next/router";
+import React, { useEffect } from "react";
 
 import { Spinner } from "@chakra-ui/react";
 import { useAppSelector } from "store/hook";

@@ -1,21 +1,22 @@
+import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+
+import { FiPlus } from "react-icons/fi";
 import { Box, Flex, Grid, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 
 import { fetchUserData } from "features/auth/AuthSlice";
 import { useAppDispatch, useAppSelector } from "store/hook";
 
-import AdminLayout from "components/admin/AdminLayout";
 import paths from "utils/paths";
-import { FiPlus } from "react-icons/fi";
-import Link from "next/link";
+import AdminLayout from "components/admin/AdminLayout";
 
 export default function Home() {
-  let dispatch = useAppDispatch();
-  let router = useRouter();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const { user } = useAppSelector((state) => state.auth);
 
-  let data = [
+  const data = [
     { label: "Write a News Story", link: paths.adminCreatePost },
     { label: "Add a Featured Story", link: paths.adminCreatePost },
     { label: "Add a New Banner", link: paths.adminHome },

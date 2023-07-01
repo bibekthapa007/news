@@ -1,27 +1,28 @@
-import { Divider, Stack, Box, Grid } from "@chakra-ui/layout";
+import { useEffect } from "react";
+import Router, { useRouter } from "next/router";
+
 import {
   Drawer,
-  DrawerCloseButton,
-  DrawerContent,
   DrawerFooter,
   DrawerHeader,
+  DrawerContent,
   DrawerOverlay,
+  DrawerCloseButton,
 } from "@chakra-ui/modal";
-import { useDisclosure } from "@chakra-ui/hooks";
-import { CgMenuGridO } from "react-icons/cg";
-import { AiOutlineHome } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
-import { BiStore, BiLogOut } from "react-icons/bi";
-import { CgOptions } from "react-icons/cg";
+import { Spinner } from "@chakra-ui/react";
+import { AiOutlineHome } from "react-icons/ai";
+import { useDisclosure } from "@chakra-ui/hooks";
+import { BiLogOut, BiStore } from "react-icons/bi";
+import { CgMenuGridO, CgOptions } from "react-icons/cg";
+import { Box, Divider, Grid, Stack } from "@chakra-ui/layout";
+
+import paths from "utils/paths";
+import { logout } from "features/auth/AuthSlice";
+import { useAppDispatch, useAppSelector } from "store/hook";
 
 import Navbar from "../Navbar";
 import NavItem from "../NavItem";
-import paths from "utils/paths";
-import { useAppDispatch, useAppSelector } from "store/hook";
-import Router, { useRouter } from "next/router";
-import { logout } from "features/auth/AuthSlice";
-import { Spinner } from "@chakra-ui/react";
-import { useEffect } from "react";
 
 interface AdminLayoutProps {
   children: React.ReactNode | React.ReactNode[];
@@ -31,6 +32,7 @@ interface AdminLayoutProps {
 const AdminDrawerItems = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+
   return (
     <Stack w="100%">
       <NavItem icon={<AiOutlineHome />} label="Home" link={paths.adminHome} />
@@ -63,6 +65,7 @@ interface AdminRouteProps {
 
 const AdminRoute = ({ children }: AdminRouteProps) => {
   const { user, initialLoading } = useAppSelector((state) => state.auth);
+
   useEffect(() => {
     if (!initialLoading && !(user?.role === "admin")) {
       Router.replace("/");
@@ -72,9 +75,11 @@ const AdminRoute = ({ children }: AdminRouteProps) => {
   if (initialLoading) {
     return <Spinner />;
   }
+
   if (!initialLoading && user?.role === "admin") {
     return <>{children}</>;
   }
+
   return null;
 };
 
@@ -118,6 +123,7 @@ function AdminLayout({ children, bgColor }: AdminLayoutProps) {
             <Box p={2}>{children}</Box>
           </Grid>
         </Box>
+
         <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
           <DrawerOverlay />
           <AdminDrawerContent />

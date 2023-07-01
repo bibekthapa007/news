@@ -1,19 +1,21 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { Button } from "@chakra-ui/button";
-import { Flex, Heading, Text, Box } from "@chakra-ui/layout";
+
 import {
-  FormControl,
   FormLabel,
+  FormControl,
   FormErrorMessage,
 } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
+import { Button } from "@chakra-ui/button";
 import { Textarea } from "@chakra-ui/textarea";
+import { Flex, Heading, Text, Box } from "@chakra-ui/layout";
 
 import { useAppDispatch, useAppSelector } from "store/hook";
 import { createPost, updatePost } from "../adminPost/AdminPostSlice";
 import { checkFileSize, checkMimeType, maxSelectFile } from "utils/image";
+
 import { PostForm, PostResponse } from "types/post";
 
 export default function CreatePostForm() {
@@ -43,13 +45,14 @@ export default function CreatePostForm() {
   }, [reset, post]);
 
   const onSubmit = handleSubmit((data: any) => {
-    console.log(data, postSlug);
     if (!postSlug) {
       dispatch(createPost(data)).then((data) => {
         let payload = data.payload as PostResponse;
         let requestStatus = data.meta.requestStatus as string;
+
         if (requestStatus === "fulfilled") {
-          let id = payload.post._id;
+          const id = payload.post._id;
+
           if (id) {
             router.push(`/post`);
           }
@@ -147,7 +150,7 @@ export default function CreatePostForm() {
           borderColor="gray.200"
           borderRadius="8px"
           onClick={() => {
-            let element = document.getElementById("userFiles");
+            const element = document.getElementById("userFiles");
             element && element.click();
           }}
         >

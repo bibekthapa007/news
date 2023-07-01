@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { Box, Heading } from "@chakra-ui/react";
-import GoogleLogin from "react-google-login";
 import { useRouter } from "next/router";
+import GoogleLogin from "react-google-login";
+import { Box, Heading } from "@chakra-ui/react";
 
 import { googleLogin } from "features/auth/AuthSlice";
-import { useAppDispatch, useAppSelector } from "store/hook";
 import DashboardLayout from "components/DashboardLayout";
+import { useAppDispatch, useAppSelector } from "store/hook";
+
 import { SigninResponse } from "types/auth";
 
 export default function SignInPage() {

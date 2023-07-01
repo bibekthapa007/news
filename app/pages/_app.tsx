@@ -1,6 +1,6 @@
 import "@fontsource/inter";
-import { useEffect } from "react";
 import Head from "next/head";
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
 
 import { ChakraProvider } from "@chakra-ui/react";
@@ -53,7 +53,7 @@ interface MyProps {
 }
 
 function FetchAppData({ children }: MyProps) {
-  let dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchUserData());

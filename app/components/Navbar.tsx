@@ -1,23 +1,24 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
-import { Avatar } from "@chakra-ui/avatar";
-import { Button, IconButton } from "@chakra-ui/button";
-import { Box, Container, Flex, Heading, Text, Spacer } from "@chakra-ui/layout";
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoMdMail } from "react-icons/io";
-import { AiOutlineMenu } from "react-icons/ai";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
 import { Select } from "@chakra-ui/react";
+import { IoMdMail } from "react-icons/io";
+import { Avatar } from "@chakra-ui/avatar";
+import { AiOutlineMenu } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
+import { Button, IconButton } from "@chakra-ui/button";
+import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
+import { Box, Container, Flex, Heading, Text, Spacer } from "@chakra-ui/layout";
 
 import paths from "utils/paths";
-import { useAppDispatch, useAppSelector } from "store/hook";
 import { logout } from "features/auth/AuthSlice";
 import { setLang } from "features/i18n/i18nSlice";
+import { useAppDispatch, useAppSelector } from "store/hook";
 
 import EnglishIcon from "../public/en.png";
 import NepaliIcon from "../public/np.png";
-import Image from "next/image";
 
 interface NavbarProps {
   admin?: boolean;
@@ -25,11 +26,12 @@ interface NavbarProps {
 }
 
 function Navbar({ admin, onOpen }: NavbarProps) {
-  let dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
 
   const { lang, supportedLangs } = useAppSelector((state) => state.i18n);
   const imageLink = user?.imageLink;
+
   return (
     <Box
       borderBottom="1px solid"

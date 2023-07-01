@@ -26,12 +26,15 @@ const paths = {
     if (slug) {
       return `/post/${slug}`;
     }
+
     return "/post";
   },
+
   singleCategory(categoryId: string | null) {
     if (categoryId) {
       return `/category/${categoryId}`;
     }
+
     return "/category";
   },
 
@@ -39,6 +42,7 @@ const paths = {
     if (slug) {
       return `/admin/post/${slug}`;
     }
+
     return "/admin/post";
   },
 

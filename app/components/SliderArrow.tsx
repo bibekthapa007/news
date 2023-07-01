@@ -1,7 +1,9 @@
 import React from "react";
+
 import { Box, Flex } from "@chakra-ui/layout";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { IconButton } from "@chakra-ui/button";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -44,6 +46,7 @@ export const PrevArrow = ({
 
 export const NextArrow = ({ className, onClick }: ArrowProps) => {
   let noMore = className && className.includes("slick-disabled");
+
   return (
     <Box position="absolute" top="0%" mx={-8} right={0} zIndex={10}>
       <IconButton

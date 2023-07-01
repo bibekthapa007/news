@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { useEffect, useMemo } from "react";
+
 import {
   Box,
   Button,
@@ -15,18 +18,16 @@ import { FiEdit } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import DataTable, { TableColumn } from "react-data-table-component";
 
-import { useAppDispatch, useAppSelector } from "store/hook";
-import { useEffect, useMemo } from "react";
-import { useRouter } from "next/router";
-import { fetchCategories } from "features/category/CategorySlice";
-import CreateCategoryForm from "features/category/CreateCategoryForm";
+import paths from "utils/paths";
 import AdminLayout from "components/admin/AdminLayout";
 import { Category, CategoryForm } from "types/category";
-import paths from "utils/paths";
+import { useAppDispatch, useAppSelector } from "store/hook";
+import { fetchCategories } from "features/category/CategorySlice";
+import CreateCategoryForm from "features/category/CreateCategoryForm";
 
 export default function AdminCategory() {
-  let dispatch = useAppDispatch();
-  let router = useRouter();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const { categories, categoriesLoading } = useAppSelector(
     (state) => state.category
   );

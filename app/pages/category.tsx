@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+
 import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 
 import { useAppDispatch, useAppSelector } from "store/hook";
@@ -11,8 +12,9 @@ import { fetchCategories } from "features/category/CategorySlice";
 import DashboardLayout from "components/DashboardLayout";
 
 export default function Home() {
-  let dispatch = useAppDispatch();
-  let router = useRouter();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const { categories, categoriesLoading } = useAppSelector(
     (state) => state.category
   );

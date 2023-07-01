@@ -1,4 +1,7 @@
+import Head from "next/head";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
 import {
   Box,
   Button,
@@ -7,18 +10,16 @@ import {
   Heading,
   SimpleGrid,
 } from "@chakra-ui/react";
-import Head from "next/head";
-import { useRouter } from "next/router";
 
-import { useAppDispatch, useAppSelector } from "store/hook";
-import { fetchMorePosts, fetchPosts } from "features/post/PostSlice";
 import PostCard from "components/PostCard";
 import DashboardLayout from "components/DashboardLayout";
+import { useAppDispatch, useAppSelector } from "store/hook";
+import { fetchMorePosts, fetchPosts } from "features/post/PostSlice";
 
 export default function CategoryPost() {
-  let dispatch = useAppDispatch();
-  let router = useRouter();
-  let categoryId = router.query.categoryId as string;
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const categoryId = router.query.categoryId as string;
   const { page, nomore, posts, postsLoading, postsError } = useAppSelector(
     (state) => state.post
   );

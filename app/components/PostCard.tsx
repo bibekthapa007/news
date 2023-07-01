@@ -1,8 +1,10 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
+import { HiChevronRight } from "react-icons/hi";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { HiChevronRight } from "react-icons/hi"
+
 import { Post } from "types/post";
 
 function PostCard({ post }: { post: Post }) {
@@ -39,7 +41,12 @@ function PostCard({ post }: { post: Post }) {
         </Box>
       </Box>
       <Text mb={2}>{description}</Text>
-      <Flex alignContent="center" justifyContent="space-between" alignItems={"center"} mb={6}>
+      <Flex
+        alignContent="center"
+        justifyContent="space-between"
+        alignItems={"center"}
+        mb={6}
+      >
         <Link href={`/category/${post.categories[0]}/post`}>
           <Button size="sm" colorScheme={"green"} variant="ghost" bg="green.50">
             Category Name

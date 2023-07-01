@@ -1,4 +1,8 @@
+import Link from "next/link";
+import Head from "next/head";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
 import {
   Box,
   Img,
@@ -9,9 +13,6 @@ import {
   Heading,
   SimpleGrid,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import Head from "next/head";
-import { useRouter } from "next/router";
 
 import { useAppDispatch, useAppSelector } from "store/hook";
 import { selectTranslations, setLang } from "features/i18n/i18nSlice";

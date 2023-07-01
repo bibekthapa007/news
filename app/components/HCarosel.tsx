@@ -1,7 +1,10 @@
 import React from "react";
+
 import { SliderProps } from "@chakra-ui/react";
+
 import Slider from "./Slider";
 import { PrevArrow, NextArrow } from "./SliderArrow";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

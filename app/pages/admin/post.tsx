@@ -1,36 +1,38 @@
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
+import DataTable, { TableColumn } from "react-data-table-component";
+
 import {
   Box,
-  Button,
   Flex,
-  Heading,
-  IconButton,
+  Text,
   Input,
+  Button,
+  Heading,
+  Tooltip,
+  IconButton,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Text,
-  Tooltip,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import DataTable, { TableColumn } from "react-data-table-component";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
+import { HiOutlineX, HiSearch } from "react-icons/hi";
 
 import { useAppDispatch, useAppSelector } from "store/hook";
 import {
   fetchPosts,
-  handleSelectedRowsChange,
-  handlePerRowsChange,
   handlePageChange,
+  handlePerRowsChange,
   rowDisabledCriteria,
+  handleSelectedRowsChange,
 } from "features/adminPost/AdminPostSlice";
-import { Post } from "types/post";
-import AdminLayout from "components/admin/AdminLayout";
-import Image from "next/image";
 import paths from "utils/paths";
-import { HiOutlineX, HiSearch } from "react-icons/hi";
+import AdminLayout from "components/admin/AdminLayout";
+
+import { Post } from "types/post";
 
 export default function AdminPost() {
   let dispatch = useAppDispatch();
@@ -69,10 +71,12 @@ export default function AdminPost() {
       {
         name: "Detail",
         selector: (row) => {
-          return <Box>
-            <Heading size="sm">{row.title}</Heading>
-            <Text>{row.title}</Text>
-          </Box>
+          return (
+            <Box>
+              <Heading size="sm">{row.title}</Heading>
+              <Text>{row.title}</Text>
+            </Box>
+          );
         },
         sortable: true,
       },
@@ -91,15 +95,15 @@ export default function AdminPost() {
       {
         name: "Views",
         grow: 0,
-        selector: (row) => row.views
+        selector: (row) => row.views,
       },
       {
         name: "Written Date",
-        selector: (row) => row.createdAt
+        selector: (row) => row.createdAt,
       },
       {
         name: "Written By",
-        selector: (row) => row.author
+        selector: (row) => row.author,
       },
       {
         name: "Action",
@@ -145,17 +149,19 @@ export default function AdminPost() {
         <Heading size="lg">Created News</Heading>
         <Flex mb={4}>
           <Link href={paths.adminCreatePost}>
-            <Button colorScheme={"green"} mr={4}>Add a News</Button>
+            <Button colorScheme={"green"} mr={4}>
+              Add a News
+            </Button>
           </Link>
           <InputGroup>
             <InputLeftElement
-              pointerEvents='none'
-              children={<HiSearch color='gray.300' />}
+              pointerEvents="none"
+              children={<HiSearch color="gray.300" />}
             />
-            <Input type='tel' placeholder='Search for a Keyword' />
+            <Input type="tel" placeholder="Search for a Keyword" />
             <InputRightElement
-              pointerEvents='none'
-              children={<HiOutlineX color='gray.300' />}
+              pointerEvents="none"
+              children={<HiOutlineX color="gray.300" />}
             />
           </InputGroup>
         </Flex>

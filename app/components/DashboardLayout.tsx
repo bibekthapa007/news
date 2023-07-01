@@ -1,25 +1,25 @@
-import React from "react";
-import { useDisclosure } from "@chakra-ui/hooks";
-import { Box, Divider, Stack, Text } from "@chakra-ui/layout";
 import {
   Drawer,
-  DrawerCloseButton,
-  DrawerContent,
   DrawerFooter,
   DrawerHeader,
+  DrawerContent,
   DrawerOverlay,
+  DrawerCloseButton,
 } from "@chakra-ui/modal";
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import React from "react";
+import { BiLogOut } from "react-icons/bi";
 import { CgMenuGridO } from "react-icons/cg";
 import { AiOutlineHome } from "react-icons/ai";
-import { BiLogOut } from "react-icons/bi";
+import { useDisclosure } from "@chakra-ui/hooks";
+import { Box, Divider, Stack, Text } from "@chakra-ui/layout";
 
-import { useAppSelector } from "store/hook";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-import NavItem from "./NavItem";
 import paths from "utils/paths";
+import { useAppSelector } from "store/hook";
+
 import Link from "./Link";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import NavItem from "./NavItem";
 
 interface DashboardLayoutProps {
   children: React.ReactNode | React.ReactNode[];

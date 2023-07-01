@@ -1,4 +1,8 @@
+import Head from "next/head";
+import Image from "next/image";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
 import {
   Box,
   Button,
@@ -10,19 +14,17 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
 
+import PostCard from "components/PostCard";
+import DashboardLayout from "components/DashboardLayout";
 import { useAppDispatch, useAppSelector } from "store/hook";
 import { fetchMorePosts, fetchPost } from "features/post/PostSlice";
-import DashboardLayout from "components/DashboardLayout";
-import PostCard from "components/PostCard";
 
 export default function SinglePost({}) {
-  let dispatch = useAppDispatch();
-  let router = useRouter();
-  let slug = router.query.slug as string;
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const slug = router.query.slug as string;
+
   const { post, posts, nomore, postsLoading, page } = useAppSelector(
     (state) => state.post
   );

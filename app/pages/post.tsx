@@ -1,12 +1,13 @@
-import { useEffect } from "react";
 import Head from "next/head";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
+
 import { Button, Container, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { fetchMorePosts, initfetchPosts } from "../features/post/PostSlice";
 import PostCard from "components/PostCard";
 import DashboardLayout from "components/DashboardLayout";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { fetchMorePosts, initfetchPosts } from "../features/post/PostSlice";
 
 export default function PostPage() {
   let dispatch = useAppDispatch();
